@@ -293,9 +293,9 @@ void HsOpenSSL_setupMutex() {
     CRYPTO_set_dynlock_destroy_callback(HsOpenSSL_dynlockDestroyCallback);
 }
 
-/* DSA ************************************************************************/
+#if !defined(OPENSSL_NO_DSA)
 
-#ifndef OPENSSL_NO_DSA
+/* DSA ************************************************************************/
 
 /* OpenSSL sadly wants to ASN1 encode the resulting bignums so we use this
  * function to skip that. Returns > 0 on success */
@@ -355,7 +355,7 @@ DSA* HsOpenSSL_DSAPrivateKey_dup(const DSA* dsa) {
     return DSAPrivateKey_dup(dsa);
 }
 
-#endif
+#endif /* !defined(OPENSSL_NO_DSA) */
 
 /* SSL ************************************************************************/
 long HsOpenSSL_SSL_CTX_set_options(SSL_CTX* ctx, long options) {

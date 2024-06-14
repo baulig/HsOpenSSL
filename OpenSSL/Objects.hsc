@@ -30,16 +30,20 @@ foreign import ccall "wrapper"
 
 data ObjNameType = MDMethodType
                  | CipherMethodType
-#ifndef __OpenBSD__
+#if defined(OBJ_NAME_TYPE_PKEY_METH)
                  | PKeyMethodType
+#endif
+#if defined(OBJ_NAME_TYPE_COMP_METH)
                  | CompMethodType
 #endif
 
 objNameTypeToInt :: ObjNameType -> CInt
 objNameTypeToInt MDMethodType     = #const OBJ_NAME_TYPE_MD_METH
 objNameTypeToInt CipherMethodType = #const OBJ_NAME_TYPE_CIPHER_METH
-#ifndef __OpenBSD__
+#if defined(OBJ_NAME_TYPE_PKEY_METH)
 objNameTypeToInt PKeyMethodType   = #const OBJ_NAME_TYPE_PKEY_METH
+#endif
+#if defined(OBJ_NAME_TYPE_COMP_METH)
 objNameTypeToInt CompMethodType   = #const OBJ_NAME_TYPE_COMP_METH
 #endif
 

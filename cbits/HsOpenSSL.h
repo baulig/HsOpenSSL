@@ -18,7 +18,7 @@
 #include <openssl/x509.h>
 #include <openssl/x509_vfy.h>
 #include <openssl/x509v3.h>
-#ifndef __OpenBSD__
+#if !defined(OPENSSL_NO_DSA)
 #include <openssl/dsa.h>
 #endif
 
@@ -111,6 +111,7 @@ void HsOpenSSL_M_ASN1_TIME_free(ASN1_TIME* timePtr);
 /* Threads ********************************************************************/
 void HsOpenSSL_setupMutex();
 
+#if !defined(OPENSSL_NO_DSA)
 /* DSA ************************************************************************/
 int HsOpenSSL_dsa_sign(DSA *dsa, const unsigned char *ddata, int len,
                        const BIGNUM **r, const BIGNUM **s);
@@ -118,6 +119,7 @@ int HsOpenSSL_dsa_verify(DSA *dsa, const unsigned char *ddata, int len,
                          const BIGNUM *r, const BIGNUM *s);
 DSA* HsOpenSSL_DSAPublicKey_dup(const DSA* dsa);
 DSA* HsOpenSSL_DSAPrivateKey_dup(const DSA* dsa);
+#endif /* !defined(OPENSSL_NO_DSA) */
 
 /* SSL ************************************************************************/
 long HsOpenSSL_SSL_CTX_set_options(SSL_CTX* ctx, long options);

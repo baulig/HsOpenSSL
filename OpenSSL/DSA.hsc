@@ -7,6 +7,7 @@
 --   See <http://www.openssl.org/docs/crypto/dsa.html>
 module OpenSSL.DSA
     ( -- * Type
+#ifndef OPENSSL_NO_DSA
       DSAKey(..)
     , DSAPubKey
     , DSAKeyPair
@@ -27,7 +28,9 @@ module OpenSSL.DSA
     , dsaKeyPairToTuple
     , tupleToDSAPubKey
     , tupleToDSAKeyPair
+#endif
     ) where
+#ifndef OPENSSL_NO_DSA
 #include "HsOpenSSL.h"
 import Control.Monad
 import qualified Data.ByteString as BS
@@ -428,3 +431,5 @@ instance Show DSAKeyPair where
                  , "dsaPrivate = ", show (dsaPrivate a)
                  , "}"
                  ]
+#endif
+

@@ -106,8 +106,13 @@ Library
         CPP-Options:     -DCALLCONV=stdcall
     else
         C-Sources:       cbits/mutex-pthread.c
-        CC-Options:      -D PTHREAD -DOPENSSL_NO_DSA
-        CPP-Options:     -DCALLCONV=ccall
+        if os(openbsd)
+            CC-Options:      -D PTHREAD -DOPENSSL_NO_DSA -Wno-deprecated-declarations -Wno-ignored-qualifiers
+            CPP-Options:     -DCALLCONV=ccall -Wno-incompatible-pointer-types-discards-qualifiers -Wno-incompatible-pointer-types
+        else
+            CC-Options:      -D PTHREAD
+            CPP-Options:     -DCALLCONV=ccall
+
 
     Exposed-Modules:
         OpenSSL
@@ -154,6 +159,25 @@ Library
         cbits
     Includes:
         openssl/asn1.h
+
+Test-Suite test-dsa
+    if os(openbsd)
+        Type:    exitcode-stdio-1.0
+        Main-Is: NoDSA.hs
+    else
+        Type:    exitcode-stdio-1.0
+        Main-Is: DSA.hs
+
+    HS-Source-Dirs: Test/OpenSSL
+    Other-Modules: TestUtils
+    Build-Depends:
+        HsOpenSSL,
+        base                 >= 4.8 && < 5,
+        bytestring           >= 0.9 && < 0.13
+    Default-Language:
+        Haskell2010
+    GHC-Options:
+        -Wall
 
 Test-Suite test-der
     Type:    exitcode-stdio-1.0

@@ -17,6 +17,9 @@ import Data.Typeable
 import Data.Maybe
 import Foreign
 import Foreign.C
+#if !defined(OPENSSL_NO_DSA)
+import OpenSSL.DSA
+#endif
 import OpenSSL.EVP.Digest
 import OpenSSL.EVP.Internal
 import OpenSSL.RSA

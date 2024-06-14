@@ -17,6 +17,8 @@ import           Foreign.C
 data STACK
 
 
+-- OpenBSD has type-safe macros, such as sk_ASN1_VALUE_NEW(), etc.
+-- which are wrappers around internal SKM_sk_... macros.
 #if !defined __OpenBSD__ && OPENSSL_VERSION_NUMBER >= 0x10100000L
 foreign import capi unsafe "openssl/safestack.h OPENSSL_sk_new_null"
         skNewNull :: IO (Ptr STACK)
