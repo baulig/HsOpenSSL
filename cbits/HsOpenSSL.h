@@ -18,7 +18,9 @@
 #include <openssl/x509.h>
 #include <openssl/x509_vfy.h>
 #include <openssl/x509v3.h>
+#ifndef __OpenBSD__
 #include <openssl/dsa.h>
+#endif
 
 /* A dirty hack to work around for broken versions of Cabal:
  * https://github.com/phonohawk/HsOpenSSL/issues/8

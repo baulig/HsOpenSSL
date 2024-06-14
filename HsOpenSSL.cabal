@@ -106,7 +106,7 @@ Library
         CPP-Options:     -DCALLCONV=stdcall
     else
         C-Sources:       cbits/mutex-pthread.c
-        CC-Options:      -D PTHREAD
+        CC-Options:      -D PTHREAD -DOPENSSL_NO_DSA
         CPP-Options:     -DCALLCONV=ccall
 
     Exposed-Modules:

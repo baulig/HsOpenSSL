@@ -17,7 +17,7 @@ import           Foreign.C
 data STACK
 
 
-#if OPENSSL_VERSION_NUMBER >= 0x10100000L
+#if !defined __OpenBSD__ && OPENSSL_VERSION_NUMBER >= 0x10100000L
 foreign import capi unsafe "openssl/safestack.h OPENSSL_sk_new_null"
         skNewNull :: IO (Ptr STACK)
 

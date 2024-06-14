@@ -17,7 +17,6 @@ import Data.Typeable
 import Data.Maybe
 import Foreign
 import Foreign.C
-import OpenSSL.DSA
 import OpenSSL.EVP.Digest
 import OpenSSL.EVP.Internal
 import OpenSSL.RSA

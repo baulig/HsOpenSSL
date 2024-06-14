@@ -295,6 +295,8 @@ void HsOpenSSL_setupMutex() {
 
 /* DSA ************************************************************************/
 
+#ifndef OPENSSL_NO_DSA
+
 /* OpenSSL sadly wants to ASN1 encode the resulting bignums so we use this
  * function to skip that. Returns > 0 on success */
 int HsOpenSSL_dsa_sign(DSA *dsa, const unsigned char *ddata, int dlen,
@@ -352,6 +354,8 @@ DSA* HsOpenSSL_DSAPublicKey_dup(const DSA* dsa) {
 DSA* HsOpenSSL_DSAPrivateKey_dup(const DSA* dsa) {
     return DSAPrivateKey_dup(dsa);
 }
+
+#endif
 
 /* SSL ************************************************************************/
 long HsOpenSSL_SSL_CTX_set_options(SSL_CTX* ctx, long options) {
