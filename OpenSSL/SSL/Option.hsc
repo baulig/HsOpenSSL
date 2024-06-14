@@ -167,14 +167,18 @@ data SSLOption
     | SSL_OP_DISABLE_TLSEXT_CA_NAMES
 #endif
     | SSL_OP_CISCO_ANYCONNECT
+#if defined(SSL_OP_NO_ANTI_REPLAY)
     | SSL_OP_NO_ANTI_REPLAY
     | SSL_OP_PRIORITIZE_CHACHA
+#endif
     | SSL_OP_ALLOW_NO_DHE_KEX
     | SSL_OP_NO_ENCRYPT_THEN_MAC
     | SSL_OP_NO_QUERY_MTU
     | SSL_OP_COOKIE_EXCHANGE
     | SSL_OP_NO_COMPRESSION
+#if defined(SSL_OP_ENABLE_MIDDLEBOX_COMPAT)
     | SSL_OP_ENABLE_MIDDLEBOX_COMPAT
+#endif
     | SSL_OP_NO_RENEGOTIATION
     | SSL_OP_CRYPTOPRO_TLSEXT_BUG
       deriving (Eq, Ord, Show, Typeable)
@@ -252,14 +256,18 @@ optionToIntegral SSL_OP_ALLOW_CLIENT_RENEGOTIATION             = #const SSL_OP_A
 #if defined(SSL_OP_DISABLE_TLSEXT_CA_NAMES)
 optionToIntegral SSL_OP_DISABLE_TLSEXT_CA_NAMES                = #const SSL_OP_DISABLE_TLSEXT_CA_NAMES
 #endif
+#if defined(SSL_OP_NO_ANTI_REPLAY)
 optionToIntegral SSL_OP_NO_ANTI_REPLAY                         = #const SSL_OP_NO_ANTI_REPLAY
 optionToIntegral SSL_OP_PRIORITIZE_CHACHA                      = #const SSL_OP_PRIORITIZE_CHACHA
 optionToIntegral SSL_OP_ENABLE_MIDDLEBOX_COMPAT                = #const SSL_OP_ENABLE_MIDDLEBOX_COMPAT
 optionToIntegral SSL_OP_NO_ENCRYPT_THEN_MAC                    = #const SSL_OP_NO_ENCRYPT_THEN_MAC
 optionToIntegral SSL_OP_ALLOW_NO_DHE_KEX                       = #const SSL_OP_ALLOW_NO_DHE_KEX
+#endif
 optionToIntegral SSL_OP_NO_QUERY_MTU                           = #const SSL_OP_NO_QUERY_MTU 
 optionToIntegral SSL_OP_COOKIE_EXCHANGE                        = #const SSL_OP_COOKIE_EXCHANGE
 optionToIntegral SSL_OP_NO_COMPRESSION                         = #const SSL_OP_NO_COMPRESSION
+#if defined(SSL_OP_NO_RENEGOTIATION)
 optionToIntegral SSL_OP_NO_RENEGOTIATION                       = #const SSL_OP_NO_RENEGOTIATION
+#endif
 optionToIntegral SSL_OP_CRYPTOPRO_TLSEXT_BUG                   = #const SSL_OP_CRYPTOPRO_TLSEXT_BUG
 optionToIntegral SSL_OP_CISCO_ANYCONNECT                       = #const SSL_OP_CISCO_ANYCONNECT

@@ -32,6 +32,12 @@
 #  include "../dist/build/autogen/cabal_macros.h"
 #endif
 
+/* OpenBSD ********************************************************************/
+#if (defined __OpenBSD__ && OPENSSL_VERSION_NUMBER == 0x20000000L)
+#undef OPENSSL_VERSION_NUMBER
+#define OPENSSL_VERSION_NUMBER 0x10100000L
+#endif
+
 /* LibreSSL *******************************************************************/
 #if (defined LIBRESSL_VERSION_NUMBER && OPENSSL_VERSION_NUMBER == 0x20000000L)
 #undef OPENSSL_VERSION_NUMBER
