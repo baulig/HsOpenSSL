@@ -46,6 +46,11 @@
 #define OPENSSL_VERSION_NUMBER 0x1000107fL
 #endif
 
+#if (defined LIBRESSL_VERSION_NUMBER && LIBRESSL_VERSION_NUMBER >= 0x40000000L)
+#undef OPENSSL_VERSION_NUMBER
+#define OPENSSL_VERSION_NUMBER 0x10100000L
+#endif
+
 /* OpenSSL 3.0 ****************************************************************/
 
 #ifndef OPENSSL_VERSION_PREREQ
