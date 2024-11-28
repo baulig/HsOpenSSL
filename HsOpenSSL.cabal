@@ -131,7 +131,6 @@ Library
         OpenSSL.PEM
         OpenSSL.PKCS7
         OpenSSL.Random
-        OpenSSL.DSA
         OpenSSL.RSA
         OpenSSL.X509
         OpenSSL.X509.Revocation
@@ -159,25 +158,6 @@ Library
         cbits
     Includes:
         openssl/asn1.h
-
-Test-Suite test-dsa
-    if os(openbsd)
-        Type:    exitcode-stdio-1.0
-        Main-Is: NoDSA.hs
-    else
-        Type:    exitcode-stdio-1.0
-        Main-Is: DSA.hs
-
-    HS-Source-Dirs: Test/OpenSSL
-    Other-Modules: TestUtils
-    Build-Depends:
-        HsOpenSSL,
-        base                 >= 4.8 && < 5,
-        bytestring           >= 0.9 && < 0.13
-    Default-Language:
-        Haskell2010
-    GHC-Options:
-        -Wall
 
 Test-Suite test-der
     Type:    exitcode-stdio-1.0
