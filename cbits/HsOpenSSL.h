@@ -80,6 +80,7 @@ int HsOpenSSL_EVP_CIPHER_iv_length(EVP_CIPHER* cipher);
 /* EVP HMAC *******************************************************************/
 HMAC_CTX *HsOpenSSL_HMAC_CTX_new(void);
 void HsOpenSSL_HMAC_CTX_free(HMAC_CTX *ctx);
+int HsOpenSSL_HMAC_Init(HMAC_CTX *ctx, const void *key, int len, const EVP_MD *md);
 
 /* X509 ***********************************************************************/
 long HsOpenSSL_X509_get_version(X509* x509);

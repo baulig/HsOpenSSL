@@ -331,7 +331,7 @@ data {-# CTYPE "openssl/hmac.h" "HMAC_CTX" #-} HMAC_CTX
 foreign import capi unsafe "HsOpenSSL.h HsOpenSSL_HMAC_CTX_new"
   _hmac_ctx_new :: IO (Ptr HMAC_CTX)
 
-foreign import capi unsafe "openssl/hmac.h HMAC_Init"
+foreign import capi unsafe "HsOpenSSL.h HsOpenSSL_HMAC_Init"
   _hmac_init :: Ptr HMAC_CTX -> Ptr () -> CInt -> Ptr EVP_MD -> IO CInt
 
 foreign import capi unsafe "openssl/hmac.h HMAC_Update"

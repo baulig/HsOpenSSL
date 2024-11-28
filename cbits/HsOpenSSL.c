@@ -90,6 +90,13 @@ void HsOpenSSL_HMAC_CTX_free(HMAC_CTX *ctx) {
 #endif
 }
 
+int HsOpenSSL_HMAC_Init(HMAC_CTX *ctx, const void *key, int len, const EVP_MD *md) {
+    if (key && md)
+        HMAC_CTX_reset(ctx);
+    return HMAC_Init_ex(ctx, key, len, md, NULL);
+}
+
+
 /* X509 ***********************************************************************/
 long HsOpenSSL_X509_get_version(X509* x509) {
     return X509_get_version(x509);
