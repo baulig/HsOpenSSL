@@ -110,10 +110,16 @@ Library
             CC-Options:      -D PTHREAD -DOPENSSL_NO_DSA -Wno-deprecated-declarations -Wno-ignored-qualifiers
             CPP-Options:     -DCALLCONV=ccall -Wno-incompatible-pointer-types-discards-qualifiers -Wno-incompatible-pointer-types -Werror
         else
-            Include-Dirs:    /usr/include/libressl
-            Extra-Lib-Dirs:  /usr/lib/libressl
-            CC-Options:      -D PTHREAD -DOPENSSL_NO_DSA
-            CPP-Options:     -DCALLCONV=ccall -Wno-discarded-qualifiers -Wno-incompatible-pointer-types -Werror
+            if os(freebsd)
+                Include-Dirs:    /usr/local/libressl/include
+                Extra-Lib-Dirs:  /usr/local/libressl/lib
+                CC-Options:      -D PTHREAD -DOPENSSL_NO_DSA -Wno-deprecated-declarations -Wno-ignored-qualifiers
+                CPP-Options:     -DCALLCONV=ccall -Wno-discarded-qualifiers -Wno-incompatible-pointer-types -Werror
+            else
+                Include-Dirs:    /usr/include/libressl
+                Extra-Lib-Dirs:  /usr/lib/libressl
+                CC-Options:      -D PTHREAD -DOPENSSL_NO_DSA
+                CPP-Options:     -DCALLCONV=ccall -Wno-discarded-qualifiers -Wno-incompatible-pointer-types -Werror
 
 
     Exposed-Modules:
