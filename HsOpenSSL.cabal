@@ -111,8 +111,8 @@ Library
             CPP-Options:     -DCALLCONV=ccall -Wno-incompatible-pointer-types-discards-qualifiers -Wno-incompatible-pointer-types -Werror
         else
             if os(freebsd)
-                Include-Dirs:    /usr/local/libressl/include
-                Extra-Lib-Dirs:  /usr/local/libressl/lib
+                Include-Dirs:    /usr/local/include
+                Extra-Lib-Dirs:  /usr/local/lib
                 CC-Options:      -D PTHREAD -DOPENSSL_NO_DSA -Wno-deprecated-declarations -Wno-ignored-qualifiers
                 CPP-Options:     -DCALLCONV=ccall -Wno-discarded-qualifiers -Wno-incompatible-pointer-types -Werror
             else
