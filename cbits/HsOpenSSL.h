@@ -31,7 +31,7 @@
  */
 #if !defined(MIN_VERSION_base) && \
     !defined(HSOPENSSL_NEED_NOT_INCLUDE_CABAL_MACROS_H)
-#  include "../dist/build/autogen/cabal_macros.h"
+// #  include "../dist/build/autogen/cabal_macros.h"
 #endif
 
 /* OpenBSD ********************************************************************/
